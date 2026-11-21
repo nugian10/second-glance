@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Glance — Spot the Difference</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="hud-left">
+      <div id="game-title">Second Glance</div>
+      <div id="level-title">Pick a scene to begin</div>
+    </div>
+    <div class="hud-center">
+      <div id="counter">Find the differences</div>
+      <div id="timer-wrap">
+        <div id="timer-bar"></div>
+        <span id="timer-text">0:00</span>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div id="score">Score 0</div>
+      <div class="hud-buttons">
+        <button id="btn-hint" type="button" title="Pulse one unfound difference (H)">Hint · 3</button>
+        <button id="btn-pause" type="button" title="Pause (Esc)">Pause</button>
+        <button id="btn-menu" type="button" title="Back to the scene list">Scenes</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="stage">
+    <figure class="panel-wrap">
+      <canvas id="cv-left" width="560" height="420"></canvas>
+      <figcaption>Original</figcaption>
+    </figure>
+    <figure class="panel-wrap">
+      <canvas id="cv-right" width="560" height="420"></canvas>
+      <figcaption>Spot the changes</figcaption>
+    </figure>
+    <div id="toast" role="status"></div>
+
+    <section id="overlay-select" class="overlay">
+      <h1>Second Glance</h1>
+      <p class="tagline">Two pictures, almost twins. Click every difference you can spot — on either picture — before the time runs out.</p>
+      <div id="level-grid"></div>
+      <p class="fineprint">Wrong clicks cost 5 seconds. You have 3 hints per scene. Keyboard: H hint · Esc pause.</p>
+    </section>
+
+    <section id="overlay-pause" class="overlay hidden">
+      <h2>Paused</h2>
+      <p class="tagline">Take a breath. The clock is stopped.</p>
+      <div class="overlay-buttons">
+        <button id="btn-resume" type="button" class="primary">Keep playing</button>
+        <button id="btn-quit-pause" type="button">Back to scenes</button>
+      </div>
+    </section>
+
+    <section id="overlay-complete" class="overlay hidden">
+      <h2 id="complete-title">Scene complete!</h2>
+      <div id="complete-stars" class="stars">★★★</div>
+      <p id="complete-stats" class="tagline"></p>
+      <div class="overlay-buttons">
+        <button id="btn-next" type="button" class="primary">Next scene</button>
+        <button id="btn-replay" type="button">Replay scene</button>
+        <button id="btn-quit-complete" type="button">Back to scenes</button>
+      </div>
+    </section>
+
+    <section id="overlay-over" class="overlay hidden">
+      <h2>Time's up!</h2>
+      <p id="over-stats" class="tagline"></p>
+      <div class="overlay-buttons">
+        <button id="btn-retry" type="button" class="primary">Try again</button>
+        <button id="btn-quit-over" type="button">Back to scenes</button>
+      </div>
+    </section>
+
+    <section id="overlay-win" class="overlay hidden">
+      <h2>You have a sharp eye!</h2>
+      <div class="stars">★★★</div>
+      <p id="win-stats" class="tagline"></p>
+      <div class="overlay-buttons">
+        <button id="btn-again" type="button" class="primary">Play again</button>
+      </div>
+    </section>
+  </main>
+
+  <footer id="foot">Every scene is drawn in code — no photographs, no downloads. Second Glance runs entirely from this page.</footer>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
